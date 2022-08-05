@@ -1,0 +1,2 @@
+x =  int(input("Input milliseconds: "))
+print("%.d day(s), %.d hour(s), %.d minute(s), %.d second(s), and %.d millisec(s)" %((x//86400000),((x%86400000)//3600000),(((x%86400000)%3600000)//60000),((((x%86400000)%3600000)%60000)//1000),(x%1000)))

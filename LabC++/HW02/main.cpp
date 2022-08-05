@@ -12,5 +12,6 @@ int main()
     Station *lastStation;
     lastStation= T.visit(7,"RRLRRRL");
     cout<<lastStation->name;
+    
     return 0;
 }
