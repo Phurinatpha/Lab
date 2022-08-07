@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"net"
 	"os"
+	//"strings"
 )
 
 func main() {
@@ -21,6 +22,7 @@ func main() {
 		// get message, output
 		client_buffer := bufio.NewReader(conn)
 		message, _ := client_buffer.ReadString('\n')
+
 		fmt.Print("Message Received: ", string(message))
 
 		keyboard_buffer := bufio.NewReader(os.Stdin)
