@@ -15,9 +15,9 @@ func main() {
 	fmt.Print("Input your name: ")
 	name_buffer := bufio.NewReader(os.Stdin)
 	name, _ := name_buffer.ReadString('\n')
-	
-	fmt.Print("Welcome " + name)
 
+	fmt.Print("Welcome " + name)
+	fmt.Fprintf(conn, name+"\n")
 	for {
 		// create buffer to get keyboard input
 		keyboard_buffer := bufio.NewReader(os.Stdin)
