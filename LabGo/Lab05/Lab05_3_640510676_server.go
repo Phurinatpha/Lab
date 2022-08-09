@@ -11,10 +11,18 @@ import (
 	"strings"
 )
 
+func check(err error, message string) {
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("%s\n", message)
+}
+
 func main() {
 	fmt.Println("Start server...")
 	// listen on port 8000
-	ln, _ := net.Listen("tcp", ":8000")
+	ln, err := net.Listen("tcp", ":8000")
+	check(err, "Server is ready.")
 	// accept connection
 	for {
 		conn, _ := ln.Accept()
