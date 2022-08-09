@@ -10,13 +10,20 @@ import (
 	//"strings"
 )
 
+func check(err error, message string) {
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("%s\n", message)
+}
 func main() {
 	fmt.Println("Start server...")
 	// listen on port 8000
-	ln, _ := net.Listen("tcp", ":8000")
+	ln, err := net.Listen("tcp", ":8000")
+	check(err, "Server is ready.")
 	// accept connection
-	conn, _ := ln.Accept()
-	// run loop forever (or until ctrl-c)
+	conn, err := ln.Accept()
+	check(err, "Accepted connection.")
 	for {
 
 		// get message, output
