@@ -9,5 +9,9 @@ def longest_digit_run(n,m=1,c=1):
     else:
         return longest_digit_run(n[1:],m,c=1)
 
-print(longest_digit_run(12345))
+def main():
+    print(longest_digit_run(1111))
+
+if __name__ == '__main__':
+    main()
         
