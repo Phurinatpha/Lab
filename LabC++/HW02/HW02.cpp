@@ -10,8 +10,6 @@ public:
      Station* trailer = new Station;
      Trip(){
         header -> next = trailer;
-        header -> prev = NULL;
-        trailer -> next = NULL;
         trailer -> prev = header;
      }
 
@@ -25,13 +23,10 @@ public:
           cout << "]\n";
      }
 
-
      void insert_front(string newItem){
           Station *nsta = new Station;
+          Station *curr = header->next;
           nsta -> name = newItem;
-
-          Station *curr = new Station;
-          curr = header->next;
 
           nsta->prev = header;
           nsta->next = curr;
@@ -42,10 +37,8 @@ public:
 
      void insert_back(string newItem){
           Station *nsta = new Station;
+          Station *curr = trailer->prev;
           nsta -> name = newItem;
-          
-          Station *curr;
-          curr = trailer->prev;
 
           nsta->next = trailer;
           nsta->prev = curr;
@@ -56,38 +49,30 @@ public:
      }
      
      void remove_front(){
-          Station *curr;
-          curr = header->next;
-
+          Station *curr = header->next;
           curr->next->prev = header;
           header->next = curr->next;
-
           delete curr;
      }
 
      void remove_back(){
-          Station *curr ; 
-          curr = trailer->prev;
-
+          Station *curr = trailer->prev; 
           curr->prev->next = trailer;
           trailer->prev = curr->prev;
-
           delete curr;
      }
 
-     Station* visit(int nStep, string stepText){
-          Station *curr;
-          curr = header->next;
-          for (int i = 0; i < stepText.length(); i++){
+     Station* visit(int nStep, string stepText,int i=0){
+          Station *curr = header->next;
+          while(i < nStep){
                if (stepText[i] == 'R'){
                     if (curr->next != trailer){
-                    curr = curr->next;
+                         curr = curr->next;
                     }
-               } else {
-                    if (curr->prev != header){
+               } else if (curr->prev != header){
                     curr = curr->prev;
-                    }
                }
+               i++;
           }
           return curr;
      }
