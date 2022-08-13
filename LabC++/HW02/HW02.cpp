@@ -6,7 +6,6 @@ using namespace std;
 class Trip {
 
 public:
-     int size = 0;
      Station* header = new Station;
      Station* trailer = new Station;
      Trip(){
@@ -28,7 +27,6 @@ public:
 
 
      void insert_front(string newItem){
-          size ++;
           Station *nsta = new Station;
           nsta -> name = newItem;
 
@@ -43,7 +41,6 @@ public:
      }
 
      void insert_back(string newItem){
-          size ++;
           Station *nsta = new Station;
           nsta -> name = newItem;
           
@@ -65,7 +62,6 @@ public:
           curr->next->prev = header;
           header->next = curr->next;
 
-          size--;
           delete curr;
      }
 
@@ -76,7 +72,6 @@ public:
           curr->prev->next = trailer;
           trailer->prev = curr->prev;
 
-          size--;
           delete curr;
      }
 
