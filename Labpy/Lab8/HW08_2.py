@@ -1,8 +1,8 @@
-def main():
-    print(moving_average([1, 2, 3, 4, 5],2))
+# def main():
+#     print(median_of_median([1, 2, 3, 4, 5]))
 
-def moving_average(list_a, w,ltout=[]):
+# def median_of_median(list_a):
     
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()
