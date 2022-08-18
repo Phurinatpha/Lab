@@ -4,7 +4,8 @@ def main():
 
 def medal_allocation(list_a):
     list_a = sorted(list_a,reverse=True)
-    if 0 in list_a: list_a = list_a = list_a[:list_a.index(0)]
+    if 0 in list_a: 
+        list_a = list_a = list_a[:list_a.index(0)]
 
     gold = list_a[:list_a.count(max(list_a))]
     list_a = list_a[list_a.count(max(list_a)):]
