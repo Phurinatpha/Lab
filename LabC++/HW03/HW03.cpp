@@ -8,33 +8,37 @@ public:
         head = NULL;
     }
     void addTerm(int coef, int exponent){
-        Poly_node *newPtr = new Poly_node;
-        newPtr->coef = coef;
-        newPtr->exponent = exponent;
-        //newPtr->next = NULL;
-        Poly_node* curr = head;
-
-        if (head == NULL){
-            head = newPtr;
-        }else{   
-            if(curr->exponent == newPtr->exponent){   
-                curr->coef += newPtr->coef;        
-            } else if (curr->exponent < newPtr->exponent) {
-                newPtr->next = curr;
-                curr = newPtr;                          
-             }else{  
-                while (curr->next != NULL && curr->next->exponent > newPtr->exponent)
-                {
-                    curr = curr->next;
-                    if (curr->next->exponent == newPtr->exponent){
-                        curr->next->coef += newPtr->coef;
-                    }else{
-                        newPtr->next = curr->next;
-                        curr->next = newPtr;
-                    }
-                }    
+        Poly_node *n_poly = new Poly_node;
+        n_poly->coef = coef;
+        n_poly->exponent = exponent;
+       
+        if (head == NULL){                                  
+            head = n_poly;
+        }else if(head->exponent <= exponent){ 
+            if(head->exponent == exponent){   
+                head->coef += coef;                 
+            } else if (head->exponent < exponent) {        
+                n_poly->next = head;                       
+                head = n_poly;
             }
-        }    
+        } else{  
+            Poly_node* curr = head;
+            while (curr->next != NULL && curr->next->exponent > exponent) 
+            {
+                curr = curr->next;
+            }
+
+            if(curr->next == NULL)
+                curr->next = n_poly;
+            else{
+                if(curr->next->exponent < exponent){
+                    n_poly->next = curr->next;
+                    curr->next = n_poly;
+                } else if (curr->next->exponent == exponent){
+                    curr->next->coef += coef;
+                }
+            }        
+        }
     }
     
     void printPolynomial(){
@@ -50,15 +54,21 @@ public:
         }
         cout<<"]\n";
     }
+
     void plus(Polynomial f2){
-        /*
-         WRITE YOUR CODE HERE
-         */
+        for (Poly_node *curf2 = f2.head; curf2!=NULL; curf2=curf2->next){
+            int n_expo = curf2->exponent;
+            int n_coef = curf2->coef;
+            addTerm(n_coef, n_expo);
+        }
     }
+
     void minus(Polynomial f2){
-        /*
-         WRITE YOUR CODE HERE
-         */
+        for (Poly_node *curf2 = f2.head; curf2!=NULL; curf2=curf2->next){
+            int n_expo = curf2->exponent;
+            int n_coef = curf2->coef;
+            addTerm((-1)*n_coef, n_expo);
+        }
     }
 };
 
