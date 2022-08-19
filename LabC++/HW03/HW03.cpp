@@ -5,15 +5,38 @@ class Polynomial{
 public:
     Poly_node* head;
     Polynomial(){
-        /*
-         WRITE YOUR CODE HERE
-         */
+        head = NULL;
     }
     void addTerm(int coef, int exponent){
-        /*
-         WRITE YOUR CODE HERE
-         */
+        Poly_node *newPtr = new Poly_node;
+        newPtr->coef = coef;
+        newPtr->exponent = exponent;
+        //newPtr->next = NULL;
+        Poly_node* curr = head;
+
+        if (head == NULL){
+            head = newPtr;
+        }else{   
+            if(curr->exponent == newPtr->exponent){   
+                curr->coef += newPtr->coef;        
+            } else if (curr->exponent < newPtr->exponent) {
+                newPtr->next = curr;
+                curr = newPtr;                          
+             }else{  
+                while (curr->next != NULL && curr->next->exponent > newPtr->exponent)
+                {
+                    curr = curr->next;
+                    if (curr->next->exponent == newPtr->exponent){
+                        curr->next->coef += newPtr->coef;
+                    }else{
+                        newPtr->next = curr->next;
+                        curr->next = newPtr;
+                    }
+                }    
+            }
+        }    
     }
+    
     void printPolynomial(){
         cout<<"[ ";
         Poly_node* ptr = head;
