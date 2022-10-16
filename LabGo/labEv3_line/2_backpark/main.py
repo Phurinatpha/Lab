@@ -38,7 +38,7 @@ while True:
             ev3.speaker.beep()
             robot.straight(-30)
             robot.turn(70)
-            robot.straight(-235)
+            robot.straight(-230)
             robot.turn(-70)
             robot.turn(-30)
             robot.straight(30)

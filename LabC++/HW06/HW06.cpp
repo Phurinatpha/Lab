@@ -1,40 +1,40 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
-class Ranking{
-private:
-    int data[1000];
-    int size;
+class Team{
+    public:
+    int ID;
+    int GD;//Goal Difference = Goal score - Goal conced
+    int PTS;//Point (win = 3, draw = 1, lose = 0)
+
+    //Constructor
+    Team(int x, int y, int z) : ID(x), GD(y), PTS(z) {}
+	
     /*
          WRITE YOUR CODE HERE
     */
-public:
-    Ranking(int n){
-    /*
-         WRITE YOUR CODE HERE
-    */
-    }
-    void inputData(){
-        for(int i=0;i<size;i++){
-            cin>>data[i];
-        }
-    }
-    int binarySearch(int key){
-    /*
-         WRITE YOUR CODE HERE
-    */
-    }
-    void merge(int left, int mid, int right){
-	/*
-         WRITE YOUR CODE HERE
-    */
-    }
-    void mergeSort(int left, int right){
-    /*
-         WRITE YOUR CODE HERE
-    */
-	}
-    int show(int index){
-        return data[index-1];
-    }
 };
 
+class Scoreboard{
+public:
+    vector<Team> T;
+    int numberOfTeams = 0;
+    
+    Scoreboard(int n){
+        numberOfTeams = n;
+        for(int i=0;i<n;i++){
+            Team x(i,0,0);
+            T.push_back(x);
+        }
+    }
+
+    void match(int ID1, int ID2,int G1,int G2){
+        /*
+         WRITE YOUR CODE HERE
+         */
+    } 
+    void showTeamAtRank(int i){
+        /*
+         WRITE YOUR CODE HERE
+         */
+    }
+};

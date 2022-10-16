@@ -1,16 +1,18 @@
-#include <iostream>
+#include <bits/stdc++.h>
 #include "HW06.cpp"
 using namespace std;
 
-
-int main()
-{
-    Ranking r(10);
-    r.inputData();
-	//input your data
-    r.mergeSort(0,9);
-    cout<<r.binarySearch(7)<<"\n";
-    for(int i=1;i<=10;i++)
-        cout<<r.show(i);
+int main(){
+    int n;
+    cin>>n;
+    Scoreboard S(n);
+    S.showTeamAtRank(1) ;
+    S.match(0,1,2,3);
+    S.showTeamAtRank(1);
+    S.showTeamAtRank(4);
+    S.match(3,2,1,1);
+    S.showTeamAtRank(1);
+    S.showTeamAtRank(2);
+    
     return 0;
 }
