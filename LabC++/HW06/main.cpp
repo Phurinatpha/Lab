@@ -4,8 +4,8 @@ using namespace std;
 
 int main(){
     int n;
-    cin>>n;
-    Scoreboard S(n);
+    // cin>>n;
+    Scoreboard S(4);
     S.showTeamAtRank(1) ;
     S.match(0,1,2,3);
     S.showTeamAtRank(1);
