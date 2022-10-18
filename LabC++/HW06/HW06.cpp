@@ -12,6 +12,7 @@ class Team{
     /*
          WRITE YOUR CODE HERE
     */
+   
 };
 
 class Scoreboard{
@@ -29,10 +30,8 @@ public:
     }
 
     void match(int ID1, int ID2,int G1,int G2){
-        int posid1,posid2;
-
-        for (int i = 0; i < numberOfTeams; i++)
-        {   
+        int posid1,posid2 = 0;
+        for (int i = 0; i < numberOfTeams; i++){   
             if (T[i].ID == ID1){
                 posid1 = i;
             }
@@ -53,11 +52,9 @@ public:
             T[posid1].PTS += 1;
             T[posid2].PTS += 1;
         }
-        sorted();
     } 
 
     void showTeamAtRank(int i){
-        
         cout << T[i-1].ID << " ";
         cout << T[i-1].PTS << " ";
         cout << T[i-1].GD << endl;
