@@ -2,16 +2,14 @@
 using namespace std;
 class Team{
     public:
-    int ID;
-    int GD;//Goal Difference = Goal score - Goal conced
-    int PTS;//Point (win = 3, draw = 1, lose = 0)
+    int ID = 0;
+    int GD = 0;//Goal Difference = Goal score - Goal conced
+    int PTS = 0;//Point (win = 3, draw = 1, lose = 0)
 
     //Constructor
     Team(int x, int y, int z) : ID(x), GD(y), PTS(z) {}
 	
-    /*
-         WRITE YOUR CODE HERE
-    */
+
    
 };
 
@@ -35,7 +33,7 @@ public:
             if (T[i].ID == ID1){
                 posid1 = i;
             }
-            else{
+            if (T[i].ID == ID2){
                 posid2 = i;
             }
         }
@@ -52,15 +50,7 @@ public:
             T[posid1].PTS += 1;
             T[posid2].PTS += 1;
         }
-    } 
 
-    void showTeamAtRank(int i){
-        cout << T[i-1].ID << " ";
-        cout << T[i-1].PTS << " ";
-        cout << T[i-1].GD << endl;
-    }
-    
-    void sorted(){
         for (int i = numberOfTeams-1; i >= 0 ; i--){
             for (int j = 1; j <= i; j++){
                 if (T[j-1].PTS < T[j].PTS){
@@ -72,8 +62,7 @@ public:
                         Team temp(T[j-1].ID,T[j-1].GD,T[j-1].PTS);
                         T[j-1] = T[j];
                         T[j] = temp;
-                    }
-                    else if( T[j-1].GD == T[j].GD && (T[j-1].ID > T[j].ID)){
+                    }else if( T[j-1].GD == T[j].GD && (T[j-1].ID > T[j].ID)){
                         Team temp(T[j-1].ID,T[j-1].GD,T[j-1].PTS);
                         T[j-1] = T[j];
                         T[j] = temp;
@@ -81,5 +70,12 @@ public:
                 }
             }  
         }
+    } 
+
+    void showTeamAtRank(int i){
+        cout << T[i-1].ID << " ";
+        cout << T[i-1].PTS << " ";
+        cout << T[i-1].GD << endl;
     }
+    
 };
