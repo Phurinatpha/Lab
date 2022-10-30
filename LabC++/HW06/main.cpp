@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#include "HW06.cpp"
+#include "ming.cpp"
 using namespace std;
 
 int main(){

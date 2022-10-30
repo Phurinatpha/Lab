@@ -39,7 +39,7 @@ public:
 
 	void insert(int k){
         if (heap_size == capacity){
-            return;
+            return ;
         }
         heap_size++;
         int i = heap_size - 1;
@@ -53,19 +53,20 @@ public:
 	void downHeap(int i){
         int left_n = left(i);
         int right_n = right(i);
-        int smallest = i;
+        int small = i;
+        
         if (left_n < heap_size && data[left_n] < data[i])
         {
-            smallest = left_n;
+            small = left_n;
         }
-        if (right_n < heap_size && data[right_n] < data[smallest])
+        if (right_n < heap_size && data[right_n] < data[small])
         {
-            smallest = right_n;
+            small = right_n;
         }
-        if (smallest != i)
+        if (small != i)
         {
-            swap(data[i], data[smallest]);
-            downHeap(smallest);
+            swap(data[i], data[small]);
+            downHeap(small);
         }
     }
 

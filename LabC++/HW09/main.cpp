@@ -27,7 +27,7 @@ Frequency *countFrequency(string s) {
 int main() {
 	Frequency *freq = countFrequency("feed me more food");
 	HuffmanTree huffman_tree;
-  huffman_tree.buildTree(freq);
+  	huffman_tree.buildTree(freq);
 	huffman_tree.decode("00111101000");
 	return 0;
 }

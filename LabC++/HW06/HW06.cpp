@@ -8,8 +8,6 @@ class Team{
 
     //Constructor
     Team(int x, int y, int z) : ID(x), GD(y), PTS(z) {}
-	
-
    
 };
 

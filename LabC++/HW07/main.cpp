@@ -1,5 +1,5 @@
 #include <iostream>
-#include "HW07.cpp"
+#include "ming.cpp"
 using namespace std;
 
 int main()
