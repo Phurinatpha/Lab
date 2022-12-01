@@ -1,4 +1,4 @@
-#include "HW09.cpp"
+#include "ming.cpp"
 #include <iostream>
 using namespace std;
 typedef pair<int, char> pic;
