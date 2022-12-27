@@ -6,7 +6,6 @@ int main(){
     string s,res,word;
     set<string> str;
 
-    
     while (getline(cin, s)){
         if (s.size() <= 200)
             res += s;
@@ -24,6 +23,8 @@ int main(){
     for (auto x : str) {
         cout << x << "\n";
     }
+
+    
 
     return 0;
 }
