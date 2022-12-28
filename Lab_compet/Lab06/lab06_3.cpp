@@ -9,10 +9,10 @@ int main(){
     while (getline(cin, s)){
         if (s.size() <= 200)
             res += s;
+        
     }
     
-    replace_if(res.begin() , res.end() ,  
-            [] (const char& c) { return !isalpha(c) ;},' ');
+    replace_if(res.begin() , res.end() ,[] (const char& c) { return !isalpha(c) ;},' ');
     transform(res.begin(), res.end(), res.begin(), ::tolower);
 
     stringstream iss(res);
@@ -23,8 +23,6 @@ int main(){
     for (auto x : str) {
         cout << x << "\n";
     }
-
-    
 
     return 0;
 }
