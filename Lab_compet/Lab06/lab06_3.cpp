@@ -9,7 +9,7 @@ int main(){
     while (getline(cin, s)){
         if (s.size() <= 200)
             res += s;
-        
+            res += "\n";
     }
     
     replace_if(res.begin() , res.end() ,[] (const char& c) { return !isalpha(c) ;},' ');
