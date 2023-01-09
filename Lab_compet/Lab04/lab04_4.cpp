@@ -5,6 +5,6 @@ int main(){
     cin.tie(0);
     long long x;
     cin >> x;
-    cout << (long long)ceil(sqrt(x)-1) ;
+    cout << (long long)ceil(sqrt(x)-1);
     return 0;
 }
