@@ -28,7 +28,7 @@ int main(){
     for (int i=0; i<p;i++){
         cin >> a[i];
     }
-
+    
     if (subsetSum(a, p, n))
         cout << "YES" << endl;
     else
