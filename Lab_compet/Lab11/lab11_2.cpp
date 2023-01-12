@@ -1,22 +1,36 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
-int main() {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-    int n,p,sum=0;
-    cin >> n >> p;
-    int ar[n];
+int tab[2000][2000];
+int subsetSum(int a[], int n, int sum) {
+    if (sum == 0)
+        return 1;
+          
+    if (n <= 0)
+        return 0;
 
-    for (int i=0; i<n; i++){
-        cin >> ar[i];
-    }
+    if (tab[n - 1][sum] != -1)
+        return tab[n - 1][sum];
     
-    for (int i=0; i<n; i++){
-        
+
+    if (a[n - 1] > sum)
+        return tab[n - 1][sum] = subsetSum(a, n - 1, sum);
+    else
+        return tab[n - 1][sum] = subsetSum(a, n - 1, sum) || subsetSum(a, n - 1, sum - a[n - 1]);
+}
+  
+int main(){
+    memset(tab, -1, sizeof(tab));
+    int n,p;
+    cin >> n >> p;
+    int a[p];
+
+    for (int i=0; i<p;i++){
+        cin >> a[i];
     }
 
-    return 0;
-
-
+    if (subsetSum(a, p, n))
+        cout << "YES" << endl;
+    else
+        cout << "NO" << endl;
 }
