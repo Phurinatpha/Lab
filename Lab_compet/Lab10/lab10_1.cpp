@@ -21,5 +21,4 @@ int main() {
     cout << "No solution.";
     return 0;
 
-
 }

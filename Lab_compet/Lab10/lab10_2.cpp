@@ -1,26 +1,33 @@
 #include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
-
 int main() {
-    int N;
-    cin >> N;
-    int abcde,fghij;
-    int temp, used = (fghij < 10000);
-    
-    temp=abcde;
-    while(temp){
-        used = used | 1<<(temp%10);
-        temp = temp/10;
+    int n;
+    cin >> n;
+    bool found = false;
+    for(int fghij = 1234; fghij <= 98765/n; fghij++){
+        int abcde = fghij * n;
+        int temp, used = (fghij < 10000);
+        temp = abcde;
+        while (temp) {
+            used = used | 1 << (temp % 10);
+            temp = temp / 10;
+        }
+        temp = fghij;
+        while (temp) {
+            used = used | 1 << (temp % 10);
+            temp = temp / 10;
+        }
+        if (used == (1 << 10) - 1) {
+            found=true;
+            printf("%05d / %05d = %d\n", abcde, fghij, n);
+        }
+       
     }
 
-    temp=fghij;
-    while(temp){
-        used = used | 1<<(temp%10);
-        temp = temp/10;
+    if (!found) {
+        cout << "There are no solutions for N." << endl;
     }
-
-    if(used = (1<<10)-1)
-        printf("%0.5d/ %0.5d = %d", abcde, fghij,N);
     
     return 0;
 }
