@@ -69,10 +69,12 @@ vector<vector<int> > nQueen(int n,int r,int c){
 int main(){
     int n = 8;
     int t,r,c;
+   
     cin >> t;
     cin >> r>>c;
     vector<vector<int>> v = nQueen(n,r,c);
     for (auto ar : v) {
+        int co=0;
         for (auto it : ar)
             cout << it << " ";
         cout << "\n";

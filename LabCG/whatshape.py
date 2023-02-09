@@ -23,9 +23,12 @@ def midPointShapeDraw(x_c,y_c,a):
             points_center.extend([(x+x_c,y+y_c) for (x,y) in points_unique])
             break
 
+
+
 if __name__ == '__main__':
     points_center =[]
     midPointShapeDraw(0,0,10)
 
     print(len(points_center),points_center)
     print("x = ",points_center[0][0],"y = ", points_center[0][1]) 
+
