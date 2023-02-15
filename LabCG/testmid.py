@@ -65,13 +65,26 @@ def plotpoints():
     glEnd()
     glFlush()
 
-    sys.exit()
+    
+
+def reshape(width, height):
+    if height == 0:
+        height = 1
+    aspect = float(width) / float(height)
+    glViewport(0, 0, width, height)
+    glMatrixMode(GL_PROJECTION)
+    glLoadIdentity()
+    if width >= height:
+        gluOrtho2D(-1.0 * aspect, 1.0 * aspect, -1.0, 1.0)
+    else:
+        gluOrtho2D(-1.0, 1.0, -1.0 / aspect, 1.0 / aspect)
+
 
 if __name__ == '__main__':
     points = []
     midshape(15, 25, 0, 0)
-    print(len(points), points)
-    print('x = ', points[0][0], '; y = ', points[0][1]) # The 1st point.
+    # print(len(points), points)
+    # print('x = ', points[0][0], '; y = ', points[0][1]) # The 1st point.
 
     glutInit(sys.argv)
     glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB)
@@ -79,6 +92,7 @@ if __name__ == '__main__':
     glutInitWindowPosition(50, 50)
     glutCreateWindow('Plot 2D Points')
     glutDisplayFunc(plotpoints)
-    
+    glutReshapeFunc(reshape)
+
     init()
     glutMainLoop()

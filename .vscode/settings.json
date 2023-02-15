@@ -3,5 +3,10 @@
         "iostream": "cpp",
         "*.tcc": "cpp",
         "iosfwd": "cpp"
-    }
+    },
+    "python.testing.pytestArgs": [
+        "Labpy"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
 }

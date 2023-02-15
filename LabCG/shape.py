@@ -57,7 +57,7 @@ if __name__ == '__main__':
     # glutInitWindowSize(500, 500)
     # glutInitWindowPosition(50, 50)
     glutCreateWindow('Plot 2D Points')
-    glutDisplayFunc(plotpeints)
+    # glutDisplayFunc(plotpeints)
     
     init()
     glutMainLoop()
