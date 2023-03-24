@@ -1,0 +1,17 @@
+import math
+
+# Input
+n = int(input())
+k=1
+# Solve for x
+delta = n**2 * 4 * k
+sqrt_delta = math.sqrt(delta)
+x1 = (sqrt_delta - n*k) / (2*n)
+x2 = (-sqrt_delta - n*k) / (2*n)
+
+# Find minimum value of the expression
+a, b = min(x1, x2), max(x1, x2)
+result = a**3/(1-b) + b**2/(1-a)
+
+# Output the result with 8 decimal places
+print(f"{result:.8f}")

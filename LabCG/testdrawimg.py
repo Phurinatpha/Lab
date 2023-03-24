@@ -4,12 +4,6 @@ from OpenGL.GLUT import *
 from PIL import Image
 import numpy as np
 
-checkImageWidth = 64
-checkImageHeight = 64
-checkImage = np.zeros((checkImageHeight, checkImageWidth, 3), dtype=np.ubyte)
-
-height = 250
-
 def loadImage(filename):
     img = Image.open(filename)
     img = img.convert("RGB")
@@ -30,10 +24,9 @@ def makeImage(image, resize=None):
     return data, width, height
 
 def init():
-    
     # Load the image from file and resize it
-    image = loadImage("/Lab/LabCG/img/or-cat.png")
-    # image = loadImage("/Lab/LabCG/img/test-moon.png")
+    # image = loadImage("/Lab/LabCG/img/or-cat.png")
+    image = loadImage("/Lab/LabCG/img/test-moon.png")
 
     resized_image = image.resize((400, int(image.size[1]*400/image.size[0])))
     
@@ -54,7 +47,6 @@ def init():
     myImage = image_array
 
     glPixelStorei(GL_UNPACK_ALIGNMENT, 1)
-
 
 def display():
     glClear(GL_COLOR_BUFFER_BIT)
@@ -89,7 +81,6 @@ def reshape(w, h):
     scaled_height = int(myImage.shape[0] * min_ratio)
     global scaledImage
     scaledImage = np.array(Image.fromarray(myImage).resize((scaled_width, scaled_height)))
-
 
 glutInit()
 glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB)

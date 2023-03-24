@@ -1,7 +1,7 @@
 import cv2
 
 # Load the image
-img = cv2.imread('/Lab/LabCG/img/or-cat.png')
+img = cv2.imread('/Lab/LabCG/img/test.png')
 
 # Convert the image to grayscale
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -13,4 +13,4 @@ _, mask = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV+cv2.THRESH_OTSU)
 result = cv2.bitwise_and(img, img, mask=mask)
 
 # Save the resulting image
-cv2.imwrite('/Lab/LabCG/img/or-cat.png', result)
+cv2.imwrite('/Lab/LabCG/img/testout.png', result)
