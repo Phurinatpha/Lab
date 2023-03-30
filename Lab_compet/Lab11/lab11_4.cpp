@@ -1,81 +1,62 @@
 #include <bits/stdc++.h>
 using namespace std;
- 
-vector<vector<int> > result;
-vector<vector<int> > res;
-int co = 0;
-bool isSafe(vector<vector<int>> board, int row, int col){
-    int i, j;
-    int N = board.size();
- 
-    for (i = 0; i < col; i++)
-        if (board[row][i])
+
+bool isValid(vector<int> &board, int col)
+{
+    for (int i = 0; i < col; i++)
+    {
+        if (board[i] == board[col] || abs(board[i] - board[col]) == col - i)
+        {
             return false;
- 
-    for (i = row, j = col; i >= 0 && j >= 0; i--, j--)
-        if (board[i][j])
-            return false;
- 
-    for (i = row, j = col; j >= 0 && i < N; i++, j--)
-        if (board[i][j])
-            return false;
- 
+        }
+    }
     return true;
 }
- 
 
-bool solveNQUtil(vector<vector<int> >& board, int col){
-    int N = board.size();
-    
-    if (col == N) {
-        vector<int> v;
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                if (board[i][j] == 1)
-                    v.push_back(j + 1);
+void solve(vector<int> &board, int col, int fixed_row, int fixed_col, vector<vector<int>> &solutions)
+{
+    if (col == 8)
+    {
+        if (board[fixed_col] == fixed_row)
+        {
+            solutions.push_back(board);
+        }
+        return;
+    }
+
+    for (int row = 1; row <= 8; row++)
+    {
+        board[col] = row;
+        if (isValid(board, col))
+        {
+            solve(board, col + 1, fixed_row, fixed_col, solutions);
+        }
+    }
+}
+
+int main()
+{
+    int N;
+    cin >> N;
+    for (int t = 0; t < N; t++)
+    {
+        int r, c;
+        cin >> r >> c;
+
+        vector<int> board(8);
+        vector<vector<int>> solutions;
+        solve(board, 0, r, c - 1, solutions);
+
+        for (const auto &sol : solutions)
+        {
+            for (int i = 0; i < sol.size(); i++)
+            {
+                cout << sol[i] << (i < sol.size() - 1 ? ' ' : '\n');
             }
         }
-        if (co < 4)
-            result.push_back(v);
-            co++;
 
-        return true;
-    }
-    
-    bool res = false;
-    for (int i = 0; i < N; i++) {
-        if (isSafe(board, i, col)) {
-            board[i][col] = 1;
-            res = solveNQUtil(board, col + 1) || res;
-            board[i][col] = 0;
-        }
-    }
- 
-    return res;
-}
- 
-vector<vector<int> > nQueen(int n,int r,int c){
-    result.clear();
-    co=0;
-    vector<vector<int>> board(n, vector<int>(n, 0));
-    if (solveNQUtil(board, r-1) == false) {
-        return {};
-    }
-    
-    sort(result.begin(), result.end());
-    return result;
-}
-
-int main(){
-    int n = 8;
-    int t,r,c;
-    cin >> t;
-    cin >> r>>c;
-    vector<vector<int>> v = nQueen(n,r,c);
-    for (auto ar : v) {
-        for (auto it : ar)
-            cout << it << " ";
-        cout << "\n";
+        if (t < N - 1)
+            cout << endl;
     }
 
     return 0;
