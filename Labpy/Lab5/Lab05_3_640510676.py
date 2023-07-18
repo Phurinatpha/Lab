@@ -16,6 +16,7 @@ def count_down_to_songkran(d, m, y):
         delta = date1 - date2   #แสดงจำนวนวันจาก import date ได้เลย
         
     return delta.days
+
 def main():
     d = int(input())
     m = int(input())

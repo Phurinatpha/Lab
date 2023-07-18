@@ -11,7 +11,6 @@ def subset(set_a,n):
     sub = list(chain.from_iterable(combinations(s, r) for r in range(n+1)))
     return sorted(list(map(set,sub)))
 
-
 def main():
 	print(subset({'d', 's', 'c', 'x'},5))
 
